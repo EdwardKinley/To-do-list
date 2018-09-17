@@ -2,3 +2,18 @@ body {
   font-family: sans-serif;
   text-align: center;
 }
+
+div.table-container {
+  display: flex;
+  flex-direction: column;
+}
+
+table {
+  margin: auto;
+  border-spacing: 1rem;
+}
+
+th {
+  background-color: lightblue;
+  padding: 0.5rem;
+}
