@@ -16,4 +16,20 @@ table {
 th {
   background-color: lightblue;
   padding: 0.5rem;
+  text-align: left;
+}
+
+td {
+  border: 1px solid black;
+  padding: 0.5rem;
+  text-align: left;
+}
+
+th.priority, td.priority {
+  text-align: right;
+}
+
+input {
+  font-size: 1rem;
+  border: none;
 }
