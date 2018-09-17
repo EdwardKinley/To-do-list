@@ -39,7 +39,6 @@ button {
   border: 1px solid black;
   padding: 0.5rem;
   height: 2.5rem;
-  margin-left: 0.5rem;
 }
 
 input.blue {
@@ -49,12 +48,38 @@ input.blue {
 td.no-padding {
   padding: 0;
   border: none;
+  display: flex;
+  flex-direction: row;
 }
 
 div.clickable {
   font-size: 1rem;
   display: inline;
-  margin: 0.5rem;
+  margin-right: 0.5rem;
   border: 1px solid black;
   padding: 0.6rem;
+  width: 1rem;
+  height: 1.5rem;
+  text-align: center;
+  line-height: 1.5rem;
+}
+
+.red {
+  background-color: red;
+  border: none;
+}
+
+.blue {
+  background-color: blue;
+  border: none;
+}
+
+.yellow {
+  background-color: yellow;
+  border: none;
+}
+
+.green {
+  background-color: green;
+  border: none;
 }

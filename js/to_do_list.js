@@ -67,5 +67,21 @@ function addButtons(element) {
   cross.textContent = '✕';
   buttonsElement.appendChild(cross);
 
+  const red = document.createElement('div');
+  red.classList.add('clickable', 'red');
+  buttonsElement.appendChild(red);
+
+  const blue = document.createElement('div');
+  blue.classList.add('clickable', 'blue');
+  buttonsElement.appendChild(blue);
+
+  const yellow = document.createElement('div');
+  yellow.classList.add('clickable', 'yellow');
+  buttonsElement.appendChild(yellow);
+
+  const green = document.createElement('div');
+  green.classList.add('clickable', 'green');
+  buttonsElement.appendChild(green);
+
   element.appendChild(buttonsElement);
 }
