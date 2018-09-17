@@ -34,6 +34,7 @@ function enableNewTask() {
 
   newSaveButton.addEventListener('click', () => {
     if (newTaskInput.value.split(' ').join('')) {
+      newSaveButton.parentNode.parentNode.removeChild(newSaveButton.parentNode);
       nextPriority ++;
       console.log('new task save button clicked');
       enableNewTask();
