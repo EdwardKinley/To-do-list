@@ -38,3 +38,7 @@ button {
   font-size: 1rem;
   border: none;
 }
+
+input.blue {
+  background-color: blue;
+}

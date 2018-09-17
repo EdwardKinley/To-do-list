@@ -23,7 +23,6 @@ function enableNewTask() {
   newTask.appendChild(newTaskInput);
   newRow.appendChild(newTask);
 
-  // newTargetDateInput.setAttribute('required');
   newTargetDate.appendChild(newTargetDateInput);
   newRow.appendChild(newTargetDate);
 
@@ -34,8 +33,10 @@ function enableNewTask() {
   table.appendChild(newRow);
 
   newSaveButton.addEventListener('click', () => {
-    nextPriority ++;
-    console.log('new task save button clicked');
-    enableNewTask();
+    if (newTaskInput.value.split(' ').join('')) {
+      nextPriority ++;
+      console.log('new task save button clicked');
+      enableNewTask();
+    }
   })
 }
