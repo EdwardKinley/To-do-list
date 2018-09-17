@@ -26,6 +26,7 @@ function enableNewTask() {
   newTargetDate.appendChild(newTargetDateInput);
   newRow.appendChild(newTargetDate);
 
+  newSave.classList.add('no-padding');
   newSaveButton.textContent = 'Save';
   newSave.appendChild(newSaveButton);
   newRow.appendChild(newSave);
@@ -34,10 +35,37 @@ function enableNewTask() {
 
   newSaveButton.addEventListener('click', () => {
     if (newTaskInput.value.split(' ').join('')) {
+      addButtons(newSaveButton.parentNode.parentNode);
       newSaveButton.parentNode.parentNode.removeChild(newSaveButton.parentNode);
       nextPriority ++;
-      console.log('new task save button clicked');
       enableNewTask();
     }
   })
+}
+
+function addButtons(element) {
+  const buttonsElement = document.createElement('td');
+  buttonsElement.classList.add('no-padding');
+
+  const up = document.createElement('div');
+  up.classList.add('clickable');
+  up.textContent = '⬆';
+  buttonsElement.appendChild(up);
+
+  const down = document.createElement('div');
+  down.classList.add('clickable');
+  down.textContent = '⬇';
+  buttonsElement.appendChild(down);
+
+  const tick = document.createElement('div');
+  tick.classList.add('clickable');
+  tick.textContent = '✓';
+  buttonsElement.appendChild(tick);
+
+  const cross = document.createElement('div');
+  cross.classList.add('clickable');
+  cross.textContent = '✕';
+  buttonsElement.appendChild(cross);
+
+  element.appendChild(buttonsElement);
 }
