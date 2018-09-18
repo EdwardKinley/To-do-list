@@ -93,10 +93,17 @@ function addButtons(element) {
 
 function makeButtonChangeColour(button, colour) {
   button.addEventListener('click', () => {
-    button.parentNode.parentNode.childNodes[1].className = colour;
-    button.parentNode.parentNode.childNodes[1].childNodes[0].className = colour;
-    button.parentNode.parentNode.childNodes[2].className = colour;
-    button.parentNode.parentNode.childNodes[2].childNodes[0].className = colour;
+    if (button.parentNode.parentNode.childNodes[1].className !== colour) {
+      button.parentNode.parentNode.childNodes[1].className = colour;
+      button.parentNode.parentNode.childNodes[1].childNodes[0].className = colour;
+      button.parentNode.parentNode.childNodes[2].className = colour;
+      button.parentNode.parentNode.childNodes[2].childNodes[0].className = colour;
+    } else {
+      button.parentNode.parentNode.childNodes[1].className = '';
+      button.parentNode.parentNode.childNodes[1].childNodes[0].className = '';
+      button.parentNode.parentNode.childNodes[2].className = '';
+      button.parentNode.parentNode.childNodes[2].childNodes[0].className = '';
+    }
   })
 }
 
