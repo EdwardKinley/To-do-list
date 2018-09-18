@@ -12,8 +12,6 @@ function enableNewTask() {
   const newTaskInput = document.createElement('input');
   const newTargetDate = document.createElement('td');
   const newTargetDateInput = document.createElement('input');
-  const newSave = document.createElement('td');
-  const newSaveButton = document.createElement('button');
 
   newPriority.textContent = table.childNodes.length - 1;
   newPriority.classList.add('priority');
@@ -25,20 +23,44 @@ function enableNewTask() {
   newTargetDate.appendChild(newTargetDateInput);
   newRow.appendChild(newTargetDate);
 
-  newSave.classList.add('no-padding');
-  newSaveButton.textContent = 'Save';
-  newSave.appendChild(newSaveButton);
-  newRow.appendChild(newSave);
+  newTaskInput.addEventListener('input', () => {
+    displaySaveButton(newRow, newTaskInput);
+  })
 
   table.appendChild(newRow);
 
-  newSaveButton.addEventListener('click', () => {
-    if (newTaskInput.value.split(' ').join('')) {
+}
+
+function displaySaveButton(row, input) {
+
+  const existingSave = document.querySelector('.new-save');
+  const validInput = (input.value.split(' ').join('') !== '');
+
+  if (!existingSave && validInput) {
+    const newSave = document.createElement('td');
+    const newSaveButton = document.createElement('button');
+    newSave.classList.add('new-save', 'no-padding');
+    newSaveButton.textContent = 'Save';
+    newSave.appendChild(newSaveButton);
+    row.appendChild(newSave);
+
+    newSaveButton.addEventListener('click', () => {
       addButtons(newSaveButton.parentNode.parentNode);
       newSaveButton.parentNode.parentNode.removeChild(newSaveButton.parentNode);
+      const old_element = input;
+      const new_element = old_element.cloneNode(true);
+      if (old_element.parentNode) {
+        old_element.parentNode.replaceChild(new_element, old_element);
+      }
       enableNewTask();
-    }
-  })
+    })
+  }
+
+  if (existingSave && !validInput) {
+    const newSave = document.querySelector('.new-save');
+    row.removeChild(newSave);
+  }
+
 }
 
 function addButtons(element) {
