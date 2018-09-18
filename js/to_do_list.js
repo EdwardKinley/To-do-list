@@ -55,6 +55,7 @@ function addButtons(element) {
   down.classList.add('clickable');
   down.textContent = '⬇';
   buttonsElement.appendChild(down);
+  makeDownButtonWork(down);
 
   const tick = document.createElement('div');
   tick.classList.add('clickable');
@@ -131,6 +132,22 @@ function makeUpButtonWork(button) {
       table.insertBefore(row, previousRow);
       row.childNodes[0].textContent = currentPriority - 1;
       previousRow.childNodes[0].textContent = currentPriority;
+    }
+  })
+}
+
+function makeDownButtonWork(button) {
+  button.addEventListener('click', () => {
+    const row = button.parentNode.parentNode;
+    const currentPriority = parseInt(row.childNodes[0].textContent, 10);
+    const table = row.parentNode;
+    const totalRows = parseInt(table.childNodes.length, 10) - 2;
+    if (currentPriority < totalRows - 1) {
+      const nextRowPriority = currentPriority + 1;
+      const nextRow = table.childNodes[nextRowPriority + 1];
+      table.insertBefore(nextRow, row);
+      row.childNodes[0].textContent = currentPriority + 1;
+      nextRow.childNodes[0].textContent = currentPriority;
     }
   })
 }

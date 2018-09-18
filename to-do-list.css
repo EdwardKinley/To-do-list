@@ -17,6 +17,7 @@ th {
   background-color: lightblue;
   padding: 0.5rem;
   text-align: left;
+  border: 1px solid black;
 }
 
 td {
