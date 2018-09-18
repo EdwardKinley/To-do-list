@@ -37,7 +37,6 @@ function enableNewTask() {
       addButtons(newSaveButton.parentNode.parentNode);
       newSaveButton.parentNode.parentNode.removeChild(newSaveButton.parentNode);
       enableNewTask();
-      console.dir(table);
     }
   })
 }
@@ -50,6 +49,7 @@ function addButtons(element) {
   up.classList.add('clickable');
   up.textContent = '⬆';
   buttonsElement.appendChild(up);
+  makeUpButtonWork(up);
 
   const down = document.createElement('div');
   down.classList.add('clickable');
@@ -107,10 +107,27 @@ function makeCrossButtonWork(button) {
     const table = row.parentNode;
     table.removeChild(row);
     const rows = table.childNodes.length - 2;
-    console.log('number of rows:', rows);
     for (i = 2; i <= rows + 1; i++) {
-      console.log(i);
       table.childNodes[i].childNodes[0].textContent = `${i - 1}`;
     }
+  })
+}
+
+function makeUpButtonWork(button) {
+  button.addEventListener('click', () => {
+    const row = button.parentNode.parentNode;
+    const currentPriority = parseInt(row.childNodes[0].textContent, 10);
+    const table = row.parentNode;
+    if (currentPriority > 1) {
+      previousRowPriority = currentPriority - 1;
+      previousRow = table.childNodes[previousRowPriority + 1];
+    }
+
+    if (previousRow) {
+      table.insertBefore(row, previousRow);
+      row.childNodes[0].textContent = currentPriority - 1;
+      previousRow.childNodes[0].textContent = currentPriority;
+    }
+
   })
 }
