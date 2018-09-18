@@ -119,15 +119,11 @@ function makeUpButtonWork(button) {
     const currentPriority = parseInt(row.childNodes[0].textContent, 10);
     const table = row.parentNode;
     if (currentPriority > 1) {
-      previousRowPriority = currentPriority - 1;
-      previousRow = table.childNodes[previousRowPriority + 1];
-    }
-
-    if (previousRow) {
+      const previousRowPriority = currentPriority - 1;
+      const previousRow = table.childNodes[previousRowPriority + 1];
       table.insertBefore(row, previousRow);
       row.childNodes[0].textContent = currentPriority - 1;
       previousRow.childNodes[0].textContent = currentPriority;
     }
-
   })
 }
