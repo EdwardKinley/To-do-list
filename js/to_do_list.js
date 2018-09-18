@@ -61,11 +61,13 @@ function addButtons(element) {
   tick.classList.add('clickable');
   tick.textContent = '✓';
   buttonsElement.appendChild(tick);
+  makeButtonChangeColour(tick, 'grey');
 
   const cross = document.createElement('div');
   cross.classList.add('clickable');
   cross.textContent = '✕';
   buttonsElement.appendChild(cross);
+  makeCrossButtonWork(cross);
 
   const red = document.createElement('div');
   red.classList.add('clickable', 'red');
@@ -92,10 +94,19 @@ function addButtons(element) {
 
 function makeButtonChangeColour(button, colour) {
   button.addEventListener('click', () => {
-    console.log('getting there...');
     button.parentNode.parentNode.childNodes[1].className = colour;
     button.parentNode.parentNode.childNodes[1].childNodes[0].className = colour;
     button.parentNode.parentNode.childNodes[2].className = colour;
     button.parentNode.parentNode.childNodes[2].childNodes[0].className = colour;
+  })
+}
+
+function makeCrossButtonWork(button) {
+  button.addEventListener('click', () => {
+    const row = button.parentNode.parentNode;
+    const removedPriority = row.childNodes[0].textContent;
+    const table = row.parentNode;
+    console.log(table);
+    table.removeChild(row);
   })
 }

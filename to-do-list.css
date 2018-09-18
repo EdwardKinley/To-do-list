@@ -66,20 +66,20 @@ div.clickable {
 
 .red {
   background-color: red;
-  border: none;
 }
 
 .blue {
   background-color: blue;
-  border: none;
 }
 
 .yellow {
   background-color: yellow;
-  border: none;
 }
 
 .green {
   background-color: green;
-  border: none;
+}
+
+.grey {
+  background-color: grey;
 }
