@@ -70,18 +70,32 @@ function addButtons(element) {
   const red = document.createElement('div');
   red.classList.add('clickable', 'red');
   buttonsElement.appendChild(red);
+  makeButtonChangeColour(red, 'red');
 
   const blue = document.createElement('div');
   blue.classList.add('clickable', 'blue');
   buttonsElement.appendChild(blue);
+  makeButtonChangeColour(blue, 'blue');
 
   const yellow = document.createElement('div');
   yellow.classList.add('clickable', 'yellow');
   buttonsElement.appendChild(yellow);
+  makeButtonChangeColour(yellow, 'yellow');
 
   const green = document.createElement('div');
   green.classList.add('clickable', 'green');
   buttonsElement.appendChild(green);
+  makeButtonChangeColour(green, 'green');
 
   element.appendChild(buttonsElement);
+}
+
+function makeButtonChangeColour(button, colour) {
+  button.addEventListener('click', () => {
+    console.log('getting there...');
+    button.parentNode.parentNode.childNodes[1].className = colour;
+    button.parentNode.parentNode.childNodes[1].childNodes[0].className = colour;
+    button.parentNode.parentNode.childNodes[2].className = colour;
+    button.parentNode.parentNode.childNodes[2].childNodes[0].className = colour;
+  })
 }
