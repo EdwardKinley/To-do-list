@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  nextPriority = 1;
   enableNewTask();
 
 })
@@ -16,7 +15,7 @@ function enableNewTask() {
   const newSave = document.createElement('td');
   const newSaveButton = document.createElement('button');
 
-  newPriority.textContent = nextPriority;
+  newPriority.textContent = table.childNodes.length - 1;
   newPriority.classList.add('priority');
   newRow.appendChild(newPriority);
 
@@ -37,8 +36,8 @@ function enableNewTask() {
     if (newTaskInput.value.split(' ').join('')) {
       addButtons(newSaveButton.parentNode.parentNode);
       newSaveButton.parentNode.parentNode.removeChild(newSaveButton.parentNode);
-      nextPriority ++;
       enableNewTask();
+      console.dir(table);
     }
   })
 }
@@ -106,7 +105,12 @@ function makeCrossButtonWork(button) {
     const row = button.parentNode.parentNode;
     const removedPriority = row.childNodes[0].textContent;
     const table = row.parentNode;
-    console.log(table);
     table.removeChild(row);
+    const rows = table.childNodes.length - 2;
+    console.log('number of rows:', rows);
+    for (i = 2; i <= rows + 1; i++) {
+      console.log(i);
+      table.childNodes[i].childNodes[0].textContent = `${i - 1}`;
+    }
   })
 }
